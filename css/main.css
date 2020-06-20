@@ -1,0 +1,166 @@
+body{
+  font: 15px/1.5 Arial, Helvetica,sans-serif;
+  padding:40px;
+  margin:0;
+  background-color:#fafafa;
+}
+
+/* Global */
+.container{
+  width:80%;
+  margin:auto;
+  overflow:hidden;
+  min-height:100%;
+  position:relative;
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+
+/* Header **/
+header{
+  background:#fafafa;
+  color:#7c7c7c;
+  padding-top:30px;
+  min-height:70px;
+  border-bottom:#3c7a67 3px solid;
+}
+
+header a{
+  color:#7c7c7c;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size:16px;
+}
+
+header li{
+  float:left;
+  display:inline;
+  padding: 0 20px 0 20px;
+}
+
+header #branding{
+  float:left;
+}
+
+header #branding h1, header #branding h3{
+  margin:0;
+}
+
+header nav{
+  float:right;
+  margin-top:10px;
+}
+
+header .highlight, header .current a{
+  color:#3c7a67;
+  font-weight:bold;
+}
+
+/*Showcase*/
+#showcase{
+  min-height: 400px;
+  background: url('../img/uni.jpg') -550px -380px;
+  text-align: center;
+  color: #fafafa;
+}
+
+#boxes{
+  margin-top:20px;
+}
+
+#boxes .box{
+  float:left;
+  text-align: center;
+  width:30%;
+  padding:10px;
+  border-left: #3c7a67 2px solid;
+  border-right: #3c7a67 2px solid;
+  color: #7c7c7c;
+}
+
+#boxes .box img{
+  width:230px;
+  border: #3c7a67 3px solid;
+  border-radius: 10px;
+}
+
+footer{
+  position: absolute;
+  bottom:0;
+  margin-top: 20px;
+  background: #fafafa;
+  color: #7c7c7c;
+}
+
+/* Sidebar */
+aside#sidebar{
+  float:right;
+  width:30%;
+  margin-top:10px;
+}
+
+aside#sidebar .quote input, aside#sidebar .quote textarea{
+  width:90%;
+  padding:5px;
+}
+
+/* Main-col */
+article#main-col{
+  float:left;
+  width:65%;
+}
+
+.dark{
+  padding:15px;
+  background:#7c7c7c;
+  color:#ffffff;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+header a:hover{
+  color:#3c7a6c;
+  font-weight:bold;
+}
+
+/* Services */
+ul#services li{
+  list-style: none;
+  padding:20px;
+  border: #3c7a67 solid 2px;
+  margin-bottom:5px;
+  background:#fafafa;
+  color: #7c7c7c;
+  margin-top: 20px;
+}
+
+@media(max-width: 768px){
+  header #branding,
+  header nav,
+  header nav li,
+  #newsletter h1,
+  #newsletter form,
+  #boxes .box,
+  article#main-col,
+  aside#sidebar{
+    float:none;
+    text-align:center;
+    width:100%;
+  }
+
+  header{
+    padding-bottom:20px;
+  }
+
+  #showcase h1{
+    margin-top:40px;
+  }
+
+  #boxes .box{
+    border: none;
+  }
+
+}

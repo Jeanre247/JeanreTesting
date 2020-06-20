@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Tic Tac Toe</title>
+</head>
+
+<body onload="Constructor()">
+    <div>
+        Player1, Do you want to go first?
+        <br>
+        <span id="closebtn" onclick="this.parentElement.style.visibility = 'hidden'; setTurn(true); document.getElementById('TheGridForTicTacToe').style.visibility = 'visible';">YES!</span>
+        &nbsp;
+        <span id="closebtn" onclick="this.parentElement.style.visibility = 'hidden'; setTurn(false); document.getElementById('TheGridForTicTacToe').style.visibility = 'visible';">NO...</span>
+    </div>
+
+
+    <div id="TheGridForTicTacToe">
+        <input type="button" value="Restart The Game" onclick="window.location.reload()">
+        <table style="width:500px; height:500px">
+            <tr>
+                <td onclick="a1Change()" id="a1" style="border-right-style:solid; border-right-color:black; border-bottom-style:solid; border-bottom-color:black; height:166px; width:166px; font-size:50px; vertical-align:middle;text-align:center"></td>
+                <td onclick="a2Change()" id="a2" style="border-right-style: solid; border-right-color: black; border-bottom-style: solid; border-bottom-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+                <td onclick="a3Change()" id="a3" style="border-bottom-style: solid; border-bottom-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+            </tr>
+            <tr>
+                <td onclick="b1Change()" id="b1" style="border-right-style: solid; border-right-color: black; border-bottom-style: solid; border-bottom-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+                <td onclick="b2Change()" id="b2" style="border-right-style: solid; border-right-color: black; border-bottom-style: solid; border-bottom-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+                <td onclick="b3Change()" id="b3" style="border-bottom-style: solid; border-bottom-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+            </tr>
+            <tr>
+                <td onclick="c1Change()" id="c1" style="border-right-style: solid; border-right-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+                <td onclick="c2Change()" id="c2" style="border-right-style: solid; border-right-color: black; height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+                <td onclick="c3Change()" id="c3" style="height: 166px; width: 166px; font-size: 50px; vertical-align: middle; text-align: center; "></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="WhoWon" style="font-size:45px"></div>
+</body>
+
+</html>
+
+
+<script>
+
+    var Enums = {
+        X: "X",//Player1s value
+        O: "O",//Player2 value
+        EMPTY: ""
+    };//This is the enum that was requested
+
+    var TheArray = [
+        [Enums.EMPTY, Enums.EMPTY, Enums.EMPTY],
+        [Enums.EMPTY, Enums.EMPTY, Enums.EMPTY],
+        [Enums.EMPTY, Enums.EMPTY, Enums.EMPTY]
+    ];//this is to find out who wins or loses
+
+    var theTurn = "";//This is to set whose turn it is
+
+    function Constructor()//launches on window load
+    {
+        document.getElementById("a1").innerHTML = TheArray[0][0];
+        document.getElementById("a2").innerHTML = TheArray[0][1];
+        document.getElementById("a3").innerHTML = TheArray[0][2];
+
+        document.getElementById("b1").innerHTML = TheArray[1][0];
+        document.getElementById("b2").innerHTML = TheArray[1][1];
+        document.getElementById("b3").innerHTML = TheArray[1][2];
+
+        document.getElementById("c1").innerHTML = TheArray[2][0];
+        document.getElementById("c2").innerHTML = TheArray[2][1];
+        document.getElementById("c3").innerHTML = TheArray[2][2];
+
+        document.getElementById('TheGridForTicTacToe').style.visibility = 'hidden';//hides the grid to prevent users from entering data until they have chosen a turn
+    }
+
+    function setTurn(Acceptance)//sets who goes first
+    {
+        if (Acceptance == true) {
+            theTurn = Enums.X;
+        }
+        else {
+            theTurn = Enums.O;
+        }
+    }
+
+    function a1Change() {
+        TheArray[0][0] = theTurn.toString();
+        document.getElementById("a1").innerHTML = TheArray[0][0].toString();
+        document.getElementById("a1").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function a2Change() {
+        TheArray[0][1] = theTurn.toString();
+        document.getElementById("a2").innerHTML = TheArray[0][1].toString();
+        document.getElementById("a2").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function a3Change() {
+        TheArray[0][2] = theTurn.toString();
+        document.getElementById("a3").innerHTML = TheArray[0][2].toString();
+        document.getElementById("a3").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+
+    function b1Change() {
+        TheArray[1][0] = theTurn.toString();
+        document.getElementById("b1").innerHTML = TheArray[1][0].toString();
+        document.getElementById("b1").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function b2Change() {
+        TheArray[1][1] = theTurn.toString();
+        document.getElementById("b2").innerHTML = TheArray[1][1].toString();
+        document.getElementById("b2").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function b3Change() {
+        TheArray[1][2] = theTurn.toString();
+        document.getElementById("b3").innerHTML = TheArray[1][2].toString();
+        document.getElementById("b3").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+
+    function c1Change() {
+        TheArray[2][0] = theTurn.toString();
+        document.getElementById("c1").innerHTML = TheArray[2][0].toString();
+        document.getElementById("c1").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function c2Change() {
+        TheArray[2][1] = theTurn.toString();
+        document.getElementById("c2").innerHTML = TheArray[2][1].toString();
+        document.getElementById("c2").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function c3Change() {
+        TheArray[2][2] = theTurn.toString();
+        document.getElementById("c3").innerHTML = TheArray[2][2].toString();
+        document.getElementById("c3").onclick = null;
+        switchTurns(theTurn.toString());
+        WhoWon();
+    }
+    function switchTurns(TheTurnToSwitch)//switches turns after the player has made a choice
+    {
+        if (TheTurnToSwitch == Enums.X) {
+            theTurn = Enums.O;
+        }
+        else if (TheTurnToSwitch == Enums.O) {
+            theTurn = Enums.X;
+        }
+    }
+
+
+    function WhoWon()//contains all of the ways both players can win
+    {
+        var thenotification = document.getElementById("WhoWon");
+
+        
+        if (TheArray[0][0] == Enums.X && TheArray[0][1] == Enums.X && TheArray[0][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[1][0] == Enums.X && TheArray[1][1] == Enums.X && TheArray[1][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[2][0] == Enums.X && TheArray[2][1] == Enums.X && TheArray[2][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][0] == Enums.X && TheArray[1][0] == Enums.X && TheArray[2][0] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][1] == Enums.X && TheArray[1][1] == Enums.X && TheArray[2][1] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][2] == Enums.X && TheArray[1][2] == Enums.X && TheArray[2][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+
+        else if (TheArray[0][0] == Enums.X && TheArray[1][1] == Enums.X && TheArray[2][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+        else if (TheArray[2][0] == Enums.X && TheArray[1][1] == Enums.X && TheArray[0][2] == Enums.X) {
+            thenotification.innerHTML = "Player1 wins!";
+            disableAll();
+        }
+
+
+        else if (TheArray[0][0] == Enums.O && TheArray[0][1] == Enums.O && TheArray[0][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[1][0] == Enums.O && TheArray[1][1] == Enums.O && TheArray[1][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[2][0] == Enums.O && TheArray[2][1] == Enums.O && TheArray[2][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][0] == Enums.O && TheArray[1][0] == Enums.O && TheArray[2][0] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][1] == Enums.O && TheArray[1][1] == Enums.O && TheArray[2][1] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][2] == Enums.O && TheArray[1][2] == Enums.O && TheArray[2][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        
+        else if (TheArray[0][0] == Enums.O && TheArray[1][1] == Enums.O && TheArray[2][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[2][0] == Enums.O && TheArray[1][1] == Enums.O && TheArray[0][2] == Enums.O) {
+            thenotification.innerHTML = "Player2 wins!";
+            disableAll();
+        }
+        else if (TheArray[0][1] != '' && TheArray[0][2] != '' && TheArray[0][3] != '' && TheArray[1][0] != '' && TheArray[1][1] != '' && TheArray[1][2] != '' && TheArray[2][0] != '' && TheArray[2][1] != '' && TheArray[2][2] != '') {
+            disableAll();
+            var thenotification = document.getElementById("WhoWon");
+            thenotification.innerHTML = "Nobody wins! :(";
+        }
+    }
+
+    function disableAll()//diables all blocks after a player has won
+    {
+        document.getElementById("a1").onclick = null;
+        document.getElementById("a2").onclick = null;
+        document.getElementById("a3").onclick = null;
+
+        document.getElementById("b1").onclick = null;
+        document.getElementById("b2").onclick = null;
+        document.getElementById("b3").onclick = null;
+
+        document.getElementById("c1").onclick = null;
+        document.getElementById("c2").onclick = null;
+        document.getElementById("c3").onclick = null;
+    }
+</script>
